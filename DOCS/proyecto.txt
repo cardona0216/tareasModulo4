@@ -1,0 +1,13 @@
+Proyecto de Administración de Reservas de Canchas
+
+Objetivo del Proyecto:
+
+Desarrollar una aplicación web que permita a los usuarios realizar reservas de canchas
+deportivas de manera sencilla y rápida.
+
+Descripción de la Necesidad:
+
+La gestión manual de reservas puede ser ineficiente y propensa a errores, como la doble
+reserva de una cancha. Este proyecto aborda esta necesidad proporcionando una solución 
+digital que permite a los usuarios ver la disponibilidad de las canchas y realizar reservas 
+en línea, optimizando el proceso tanto para los usuarios como para los administradores.

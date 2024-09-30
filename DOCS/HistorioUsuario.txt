@@ -1,0 +1,36 @@
+Historias de Usuario
+
+1. Registro e Inicio de Sesión
+Como usuario, quiero poder registrarme en la aplicación, para poder crear una
+cuenta que me permita hacer reservas de canchas.
+Como usuario registrado, quiero poder iniciar sesión en la aplicación, para 
+acceder a mis reservas y hacer nuevas reservas.
+
+2. Ver Disponibilidad de Canchas
+Como usuario autenticado, quiero ver un calendario con la disponibilidad de
+canchas, para poder elegir una fecha y hora específica para mi reserva.
+
+3. Crear una Reserva
+Como usuario autenticado, quiero poder seleccionar una cancha, una fecha y una
+hora disponibles, para hacer una reserva y asegurarme de que la cancha estará 
+disponible cuando la necesite.
+
+4. Editar una Reserva
+Como usuario, quiero poder editar una reserva existente, para cambiar la fecha, 
+hora o cancha si mis planes cambian.
+
+5. Cancelar una Reserva
+Como usuario, quiero poder cancelar una reserva existente, para liberar la cancha
+si ya no la voy a utilizar.
+
+6. Ver Mis Reservas
+Como usuario autenticado, quiero poder ver una lista de todas mis reservas, para 
+poder gestionar mis próximas sesiones en la cancha.
+
+7. Gestión de Errores
+Como usuario, quiero recibir mensajes claros si intento reservar una cancha en un 
+horario no disponible, para poder elegir otro horario sin confusión.
+
+8. Editar Perfil de Usuario
+Como usuario autenticado, quiero poder editar mi perfil, para actualizar mi información
+personal, como mi nombre, correo electrónico o contraseña.

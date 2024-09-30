@@ -1,0 +1,50 @@
+/* Estilos para la barra de navegación horizontal */
+.sidebar {
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  background-color: #333;
+  color: #fff;
+  height: 60px; /* Ajusta la altura según lo necesites */
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000; /* Asegúrate de que la barra esté encima del contenido */
+}
+
+.sidebar-title {
+  margin-right: auto; /* Mueve el título a la izquierda */
+  font-size: 24px; /* Tamaño de fuente del título */
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  display: flex; /* Muestra los elementos en línea horizontal */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-item {
+  margin-left: 20px; /* Espaciado entre los elementos */
+}
+
+.sidebar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.sidebar-link:hover {
+  background-color: #575757;
+}
+
+.punter {
+  cursor: pointer;
+}
+
+

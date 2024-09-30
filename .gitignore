@@ -1,0 +1,17 @@
+# Ignorar el entorno virtual
+venv/
+
+# Ignorar archivos de base de datos de desarrollo
+db.sqlite3
+
+# Ignorar archivos compilados de Python
+db.sqlite3
+__pycache__/
+*.pyc
+
+# Ignorar configuraciones específicas del entorno de desarrollo
+.idea/
+.vscode/
+*.log
+
+client/
