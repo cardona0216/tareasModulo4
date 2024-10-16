@@ -37,14 +37,8 @@ export function Navigation({ handleLogout , user }) {
 
   return (
     <nav className="sidebar">
-      <h1 className="sidebar-title">Reserva de Cancha</h1>
+      <h1 className="sidebar-title">Tareas</h1>
       <ul className="sidebar-menu">
-        <li className="sidebar-item">
-          <Link to="/cancha" className="sidebar-link">Reservar</Link>
-        </li>
-        <li className="sidebar-item">
-          <Link to="/reserva" className="sidebar-link">Mis reservas</Link>
-        </li>
          <li className="sidebar-item">
           <Link to="/tasks" className="sidebar-link">Mis Tareas App</Link>
         </li>
