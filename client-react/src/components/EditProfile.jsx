@@ -12,7 +12,7 @@ function EditProfile() {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('accessToken');
       if (token) {
         const userData = await getUserProfile(token);
         if (userData) {
@@ -32,7 +32,7 @@ function EditProfile() {
   const onSubmit = async (data) => {
     console.log(data);
     
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
     if (token) {
       try {
         await updateUserProfile(token, data);
@@ -47,7 +47,7 @@ function EditProfile() {
 
   return (
     <div className="container mx-auto mt-20 p-6 bg-white rounded-lg shadow-md max-w-lg">
-    <h1 className="text-2xl font-bold mb-6 text-center">Editar Perfil</h1>
+    <h1 className="text-2xl font-bold mb-6 text-center">Editar Perfilssss</h1>
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
         <label htmlFor="username" className="block text-sm font-medium text-gray-700">Usuario</label>

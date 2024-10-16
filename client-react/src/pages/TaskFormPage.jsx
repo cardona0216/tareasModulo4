@@ -46,10 +46,14 @@ useEffect(() => {
 
  async function loadTask() {
     if (params.id) {
+      console.log(params.id);
+      
       console.log('obteniendo datos');
       const res = await getTask(params.id);
-      setValue('titulo', res.data.titulo);
-      setValue('description', res.data.description);
+      console.log(res);
+      
+      setValue('titulo', res.titulo);
+      setValue('description', res.description);
       
     }
   }

@@ -16,7 +16,7 @@ export function Navigation({ handleLogout , user }) {
   const logout = () => {
     handleLogout();  // Llama a la función pasada como prop
     navigate('/login'); // Redirige al usuario a la página de login
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
 
   };
     // Cierra el desplegable al hacer clic fuera de él

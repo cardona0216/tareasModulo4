@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate
 
 from rest_framework.permissions import AllowAny
 
+from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
 
 @api_view(['POST'])
@@ -21,18 +22,19 @@ def login(request):
     password = request.data.get('password')
     if not username or not password:
         return Response({'error': 'Username and password are required'}, status=status.HTTP_400_BAD_REQUEST)
+    
     user = authenticate(username=username, password=password)
     if user is None:
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
-    # Crear o recuperar el token
-        return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)  
-
-    # Crear o recuperar el token
-    token, created = Token.objects.get_or_create(user=user)
+    # Generar tokens JWT
+    refresh = RefreshToken.for_user(user)
     serializer = UserSerializer(instance=user)
-    return Response({'token': token.key, 'user': serializer.data}, status=status.HTTP_200_OK)
+    return Response({
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+        'user': serializer.data
+    }, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -48,12 +50,13 @@ def register(request):
         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['POST', 'PUT'])
+@api_view(['GET', 'PUT'])  # Cambia 'POST' por 'GET'
 @permission_classes([IsAuthenticated])
 def profile(request):
+    print(request.headers)  # Verifica qué encabezados llegan al backend
     user = request.user
 
-    if request.method == 'POST':
+    if request.method == 'GET':  # Cambia 'POST' por 'GET' para obtener el perfil
         serializer = UserSerializer(user)
         return Response(serializer.data)
 

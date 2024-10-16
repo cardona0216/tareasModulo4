@@ -17,16 +17,23 @@ const Login = ({ setIsAuthenticated, setUser  }) => {
     try {
       const response = await login({ username, password });
 
-      // Guardar el token en el localStorage
-      localStorage.setItem('token', response.data.token);
+      const token = response.data.access; // Asegúrate de que este es el nombre correcto del token
+      console.log(token);
+      
+      localStorage.setItem('accessToken', token);
+
 
       // Cambiar el estado de autenticación
       setIsAuthenticated(true);
 
        // Obtener el perfil del usuario inmediatamente después de iniciar sesión
-       const userData = await getUserProfile(response.data.token);
-       setUser(userData); // Actualizar el estado con el perfil del usuario
-
+       // Obtener el perfil del usuario inmediatamente después de iniciar sesión
+       const userData = await getUserProfile(token);
+       if (userData) {
+         setUser(userData); // Actualizar el estado con el perfil del usuario
+       } else {
+         console.error('No se pudo obtener el perfil del usuario.');
+       }
       // Redirigir a tasks
       navigate('/cancha');
     } catch  {

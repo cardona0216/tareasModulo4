@@ -23,11 +23,13 @@ function App() {
   const navigate = useNavigate(); // Hook para redirigir al login
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('accessToken');
+    console.log('Este es el token de acceso:', token);
+    
     if (token) {
         setIsAuthenticated(true);
         getUserProfile(token).then((userData) => {
-          console.log('este es el user',userData);
+          console.log('Este es el perfil del usuario:', userData);
           
           setUser(userData)
         })
@@ -36,7 +38,7 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     setIsAuthenticated(false);
     setUser(null);
     navigate('/login'); // Redirigir al login después de cerrar sesión
