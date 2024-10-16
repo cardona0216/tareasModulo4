@@ -49,16 +49,12 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       {isAuthenticated && <Navigation handleLogout={handleLogout} user={user?.username}  />}
-      <main className="flex-grow bg-purple-500 bg-opacity-100 bg-cover bg-center" style={{ backgroundImage: "url('src/assets/cancha.jpg')" }}>
+      <main className="flex-grow  bg-opacity-100 bg-cover bg-center" >
         <Routes>
           <Route path='/' element={isAuthenticated ? <Navigate to='/cancha' /> : <Navigate to='/login'/>}/>
-          <Route path='/login' element={isAuthenticated ? <Navigate to='/cancha' /> : <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}/>
+          <Route path='/login' element={isAuthenticated ? <Navigate to='/tasks' /> : <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}/>
           <Route path='/register' element={<Register />}/>
-          {/* <Route path="/reserva/:canchaId" element={<ReservaForm />} /> Ruta para el formulario de reserva */}
-          {/* <Route path='/cancha' element={isAuthenticated ? <CanchasList />: <Navigate to='/login'/>}/> */}
           <Route path='/edit-profile' element={isAuthenticated ? <EditProfile /> : <Navigate to='/login' />} />
-          {/* <Route path="/reservas/editar/:id" element={<ReservaEditForm />} /> */}
-          {/* <Route path='/reserva' element={isAuthenticated ? <ListaReservas /> : <Navigate to='/login' />}/> */}
           <Route path='/tasks' element={isAuthenticated ? <TasksPage /> : <Navigate to='/login' />}/>
           <Route path='/tasks-create' element={isAuthenticated ? <TasksFormPage /> : <Navigate to='/login' />}/>
           <Route path='/tasks/:id' element={isAuthenticated ? <TasksFormPage /> : <Navigate to='/login' />}/>
