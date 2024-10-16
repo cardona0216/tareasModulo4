@@ -35,7 +35,7 @@ const Login = ({ setIsAuthenticated, setUser  }) => {
          console.error('No se pudo obtener el perfil del usuario.');
        }
       // Redirigir a tasks
-      navigate('/cancha');
+      navigate('/tasks');
     } catch  {
       setError('Contraseña o Usuario invalido');
     }

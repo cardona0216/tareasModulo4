@@ -7,10 +7,9 @@ import { Toaster } from 'react-hot-toast';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { getUserProfile } from './api/profileApi';
-import CanchasList from './components/CanchasList';
-import { ListaReservas } from './components/ListaReservas';
+
 import EditProfile from './components/EditProfile';
-import { ReservaEditForm } from './components/ReservaEditForm';
+
 
 
 
@@ -56,10 +55,10 @@ function App() {
           <Route path='/login' element={isAuthenticated ? <Navigate to='/cancha' /> : <Login setIsAuthenticated={setIsAuthenticated} setUser={setUser} />}/>
           <Route path='/register' element={<Register />}/>
           {/* <Route path="/reserva/:canchaId" element={<ReservaForm />} /> Ruta para el formulario de reserva */}
-          <Route path='/cancha' element={isAuthenticated ? <CanchasList />: <Navigate to='/login'/>}/>
+          {/* <Route path='/cancha' element={isAuthenticated ? <CanchasList />: <Navigate to='/login'/>}/> */}
           <Route path='/edit-profile' element={isAuthenticated ? <EditProfile /> : <Navigate to='/login' />} />
-          <Route path="/reservas/editar/:id" element={<ReservaEditForm />} />
-          <Route path='/reserva' element={isAuthenticated ? <ListaReservas /> : <Navigate to='/login' />}/>
+          {/* <Route path="/reservas/editar/:id" element={<ReservaEditForm />} /> */}
+          {/* <Route path='/reserva' element={isAuthenticated ? <ListaReservas /> : <Navigate to='/login' />}/> */}
           <Route path='/tasks' element={isAuthenticated ? <TasksPage /> : <Navigate to='/login' />}/>
           <Route path='/tasks-create' element={isAuthenticated ? <TasksFormPage /> : <Navigate to='/login' />}/>
           <Route path='/tasks/:id' element={isAuthenticated ? <TasksFormPage /> : <Navigate to='/login' />}/>
