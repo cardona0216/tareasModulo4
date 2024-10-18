@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializer import TaskSerializer, CanchaSerializer, ReservaSerializer
 from .models import Tasks , Cancha , Reserva
+from rest_framework.response import Response
 from rest_framework import serializers
 
 from rest_framework.permissions import AllowAny
@@ -22,6 +23,12 @@ class TaskView(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # Asigna el usuario autenticado a la tarea al momento de crearla
         serializer.save(user=self.request.user)
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)  # `partial=True` permite actualizaciones parciales
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)  # Esto guarda la instancia actualizada
+        return Response(serializer.data)
 
 class CanchaViewSet(viewsets.ModelViewSet):
     permission_classes = [AllowAny]

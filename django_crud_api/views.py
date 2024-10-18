@@ -50,13 +50,13 @@ def register(request):
         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT'])  # Cambia 'POST' por 'GET'
+@api_view(['GET', 'PUT'])  
 @permission_classes([IsAuthenticated])
 def profile(request):
-    print(request.headers)  # Verifica qué encabezados llegan al backend
+    print(request.headers)  
     user = request.user
 
-    if request.method == 'GET':  # Cambia 'POST' por 'GET' para obtener el perfil
+    if request.method == 'GET': 
         serializer = UserSerializer(user)
         return Response(serializer.data)
 

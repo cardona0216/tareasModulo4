@@ -4,10 +4,24 @@ from django.db import models
 #creaos la tabla para las tareas
 
 class Tasks(models.Model):
+    ESTADO_CHOICES = [
+        ('pendiente', 'Pendiente'),
+        ('en_progreso', 'En Progreso'),
+        ('completada', 'Completada'),
+    ]
+    
+    PRIORIDAD_CHOICES = [
+        ('baja', 'Baja'),
+        ('media', 'Media'),
+        ('alta', 'Alta'),
+    ]
+    
     titulo = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    done = models.BooleanField(default=False)
-    user = models.ForeignKey(User , on_delete=models.CASCADE , default=1)
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')  # Nuevo campo de estado
+    prioridad = models.CharField(max_length=10, choices=PRIORIDAD_CHOICES, default='media')  # Nuevo campo de prioridad
+    fecha_vencimiento = models.DateTimeField(null=True, blank=True)  # Campo opcional para fecha de vencimiento
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self) :
         return self.titulo

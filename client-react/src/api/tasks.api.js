@@ -5,6 +5,9 @@ import axios from 'axios';
 
 const taskApi = axios.create({
     baseURL: 'http://localhost:8000/tasks/api/v1/tarea/',
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`, // Asegúrate de tener el token almacenado
+      },
 })
 
 taskApi.interceptors.request.use(config => {
@@ -77,3 +80,29 @@ export const createTask = (task) => {
 export const updateTask = (id, task) => taskApi.put(`/${id}/`, task)
 
 export const deleteTasks = (id) => taskApi.delete(`/${id}/`)
+ 
+
+
+export const updateTaskStatus = async (id, movedTask) => {
+    const validEstados = ['pendiente', 'en_progreso', 'completada'];
+    const validPrioridades = ['baja', 'media', 'alta'];
+  
+    const updatedData = {
+      titulo: movedTask.titulo,
+      description: movedTask.description || '',
+      estado: validEstados.includes(movedTask.estado) ? movedTask.estado : 'pendiente',
+      prioridad: validPrioridades.includes(movedTask.prioridad) ? movedTask.prioridad : 'media',
+      fecha_vencimiento: movedTask.fecha_vencimiento || null,
+    };
+  
+    console.log("Updating task:", id, updatedData); // Log de datos a actualizar
+    try {
+      const response = await taskApi.put(`/${id}/`, updatedData);
+      return response.data;
+    } catch (error) {
+      console.error("Error updating task status:", error.response.data); // Log de error detallado
+      throw error; // Re-lanza el error para manejarlo más arriba si es necesario
+    }
+  };
+  
+  

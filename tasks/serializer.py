@@ -7,9 +7,8 @@ from rest_framework.validators import ValidationError
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tasks
-        # fields = ('id', 'titulo', 'description', 'done')
-
         fields = '__all__'
+       
 
 class UserSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)  # Confirmación de contraseña
